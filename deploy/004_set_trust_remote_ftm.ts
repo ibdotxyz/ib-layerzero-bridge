@@ -9,14 +9,14 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const { deployer } = await getNamedAccounts();
 
   const opChainId = 111; // LayerZero chainId
-  const ibProxyOFTAddress = "";
+  const ibProxyOFTAddress = "0x6fb612d5b817183845c6a5bB2D2aFB6E7cbA4Ee9";
 
   if (hre.network.name !== "ftm") {
     return;
   }
 
   await execute(
-    "IBProxyOFT",
+    "IBOFT",
     { from: deployer, log: true },
     "setTrustedRemoteAddress",
     opChainId,

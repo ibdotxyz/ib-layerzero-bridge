@@ -5,7 +5,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const { deployments, getNamedAccounts } = hre;
   const { deploy } = deployments;
 
-  const { deployer, lzEndpoint } = await getNamedAccounts();
+  const { deployer, lzEndpoint, ibToken } = await getNamedAccounts();
 
   if (hre.network.name !== "ftm") {
     console.log("Skipping deployment of OFT on non-fantom network");
@@ -14,7 +14,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 
   await deploy("IBOFT", {
     from: deployer,
-    args: [lzEndpoint],
+    args: [ibToken, lzEndpoint],
     log: true,
   });
 };
